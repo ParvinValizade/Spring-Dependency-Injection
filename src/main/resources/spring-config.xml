@@ -3,11 +3,59 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="notification" class="az.spring.demo.Notification">
+    <bean id="notification1" class="az.spring.demo.Notification">
+       <constructor-arg ref="employee"/>
         <property name="message" ref="sms"/>
     </bean>
+    <bean id="notification2" class="az.spring.demo.Notification">
+        <constructor-arg ref="employee"/>
+        <property name="message" ref="email"/>
+    </bean>
+
+    <bean id="notification3" class="az.spring.demo.Notification" autowire="byName">
+    </bean>
+
 
     <bean id="sms" class="az.spring.demo.Sms"/>
 
     <bean id="email" class="az.spring.demo.Email"/>
+
+    <bean id="message" class="az.spring.demo.Email"/>
+
+    <bean id="employee" class="az.spring.demo.Employee">
+      <constructor-arg value="Parvin" type="java.lang.String"/>
+      <constructor-arg value="Valizade" type="java.lang.String"/>
+        <property name="devices">
+            <list>
+                <ref bean="deviceAndroid"/>
+                <ref bean="deviceIOS"/>
+            </list>
+        </property>
+        <property name="deviceMap">
+            <map>
+                <entry key="Android">
+                    <ref bean="deviceAndroid"/>
+                </entry>
+                <entry key="IOS">
+                    <ref bean="deviceIOS"/>
+                </entry>
+            </map>
+        </property>
+        <property name="databaseProperties">
+            <props>
+                <prop key="url">jdbc:mysql://localhost:8080</prop>
+                <prop key="username">root</prop>
+                <prop key="password">12345</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="deviceAndroid" class="az.spring.demo.Device">
+        <property name="name" value="Android"/>
+        <property name="version" value="v1.09"/>
+    </bean>
+    <bean id="deviceIOS" class="az.spring.demo.Device">
+        <property name="name" value="IOS"/>
+        <property name="version" value="v1.08"/>
+    </bean>
 </beans>
