@@ -12,7 +12,7 @@
         <property name="message" ref="email"/>
     </bean>
 
-    <bean id="notification3" class="az.spring.demo.Notification" autowire="byName">
+    <bean id="notification3" class="az.spring.demo.Notification" autowire="byName" scope="prototype">
     </bean>
 
 

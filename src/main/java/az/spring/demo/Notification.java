@@ -10,6 +10,7 @@ public class Notification {
     }
 
     public Notification() {
+        System.out.println("Notification constructor worked..");
     }
 
     //setter injection
