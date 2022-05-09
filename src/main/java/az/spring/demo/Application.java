@@ -11,8 +11,7 @@ public class Application {
 
 //        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
-        Notification notification = context.getBean("notification3",Notification.class);
-        Notification notification2 = context.getBean("notification3",Notification.class);
-//        notification.alert();
+        Notification notification = context.getBean("notification4",Notification.class);
+        notification.alert();
     }
 }

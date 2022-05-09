@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="notification1" class="az.spring.demo.Notification">
        <constructor-arg ref="employee"/>
@@ -12,8 +13,11 @@
         <property name="message" ref="email"/>
     </bean>
 
-    <bean id="notification3" class="az.spring.demo.Notification" autowire="byName">
+    <context:annotation-config/>
+    <bean id="notification3" class="az.spring.demo.Notification" autowire="byName" scope="prototype">
     </bean>
+
+    <bean id="notification4" class="az.spring.demo.Notification"/>
 
 
     <bean id="sms" class="az.spring.demo.Sms"/>

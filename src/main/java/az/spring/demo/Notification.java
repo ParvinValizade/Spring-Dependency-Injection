@@ -1,7 +1,17 @@
 package az.spring.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
+
+@ComponentScan
 public class Notification {
+
+    @Autowired
+    @Qualifier("email")
      private Message message;
+
+    @Autowired
      private Employee employee;
 
      //constructor injection
